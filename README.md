@@ -58,9 +58,9 @@ python equal_error_rate.py VoxCeleb1/test VoxCeleb1/test/veri_test.txt -w wav2me
 - 预处理训练数据
 要使用此处提供的脚本，您必须按以下方式组织原始数据：
 
-	<ul>来自同一人的所有语音都放在对应发言人目录下</ul>
-	<ul>所有发言人目录都放在根目录</ul>
-	<ul>发言人目录可以有子目录，语音可以放在子目录下</ul>
+	来自同一人的所有语音都放在对应发言人目录下
+	所有发言人目录都放在根目录
+	发言人目录可以有子目录，语音可以放在子目录下
 
 您可以从多个根目录中提取话语，例如
 ```python
@@ -70,9 +70,9 @@ python preprocess.py VoxCeleb1/dev LibriSpeech/train-clean-360 -o preprocessed
 
 预处理后，3个预处理模块将保存在输出目录中：
 
-	<ul>wav2mel.pt</ul>
-	<ul>sox_effects.pt</ul>
-	<ul>log_melspectrogram.pt</ul>
+	wav2mel.pt
+	sox_effects.pt
+	log_melspectrogram.pt
 第一个模块wav2mel.pt由第二和第三模块组成。这些模块都使用TorchScript编译，可以在任何地方用于预处理音频数据。
 
 
