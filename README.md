@@ -1,6 +1,7 @@
 这是一个由GE2E损失训练的把发言人语音嵌入（d-vector）的PyTorch实现。
 原始关于GE2E损失的论文在这里：[Generalized End-to-End Loss for Speaker Verification](https://arxiv.org/abs/1710.10467)。
 本文档由原始英文文档翻译修订而来。
+
 **使用方法**
 
 ```python
