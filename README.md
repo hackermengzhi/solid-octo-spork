@@ -1,5 +1,7 @@
 这是一个由GE2E损失训练的把发言人语音嵌入（d-vector）的PyTorch实现。
+
 原始关于GE2E损失的论文在这里：[Generalized End-to-End Loss for Speaker Verification](https://arxiv.org/abs/1710.10467)。
+
 本文档由原始英文文档翻译修订而来。
 
 **使用方法**
@@ -56,9 +58,10 @@ python equal_error_rate.py VoxCeleb1/test VoxCeleb1/test/veri_test.txt -w wav2me
 - 预处理训练数据
 要使用此处提供的脚本，您必须按以下方式组织原始数据：
 
-	来自同一人的所有语音都放在对应发言人目录下
-	所有发言人目录都放在根目录
-	发言人目录可以有子目录，语音可以放在子目录下
+	<ul>来自同一人的所有语音都放在对应发言人目录下</ul>
+	<ul>所有发言人目录都放在根目录</ul>
+	<ul>发言人目录可以有子目录，语音可以放在子目录下</ul>
+
 您可以从多个根目录中提取话语，例如
 ```python
 python preprocess.py VoxCeleb1/dev LibriSpeech/train-clean-360 -o preprocessed
@@ -67,9 +70,9 @@ python preprocess.py VoxCeleb1/dev LibriSpeech/train-clean-360 -o preprocessed
 
 预处理后，3个预处理模块将保存在输出目录中：
 
-wav2mel.pt
-sox_effects.pt
-log_melspectrogram.pt
+	<ul>wav2mel.pt</ul>
+	<ul>sox_effects.pt</ul>
+	<ul>log_melspectrogram.pt</ul>
 第一个模块wav2mel.pt由第二和第三模块组成。这些模块都使用TorchScript编译，可以在任何地方用于预处理音频数据。
 
 
@@ -89,7 +92,8 @@ log_melspectrogram.pt
 
 - 可视化语音嵌入
 
-   你可以使用训练好的d-vector来可视化语音嵌入。注意，你必须像预处理一样组织语音的目录。例如：
+  
+  你可以使用训练好的d-vector来可视化语音嵌入。注意，你必须像预处理一样组织语音的目录。例如：
 
    ```python
    python visualize.py LibriSpeech/dev-clean -w wav2mel.pt -c dvector.pt -o tsne.jpg
