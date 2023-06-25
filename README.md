@@ -3,10 +3,12 @@
 原始关于GE2E损失的论文在这里：[Generalized End-to-End Loss for Speaker Verification](https://arxiv.org/abs/1710.10467)。
 
 本文档由原始英文文档翻译修订而来。
+**注意：dvector脚本目前仅支持linux，放在win上面会报错**
 
 **使用方法**
 
 ```python
+#音频处理
 import torch
 import torchaudio
 
@@ -17,12 +19,41 @@ wav_tensor, sample_rate = torchaudio.load("example.wav")
 mel_tensor = wav2mel(wav_tensor, sample_rate)  # shape: (frames, mel_dim)
 emb_tensor = dvector.embed_utterance(mel_tensor)  # shape: (emb_dim)
 ```
+单次训练已修改为读取文件夹，注意在读取文件的时候文件数要大于聚类数，不然会报错
+```bash
+~python3 demo.py --file ./train.wav --mode register~
+python3 demo.py --file ./train --mode register
+python3 demo.py --file ./value.wav --mode recognize
+```
 
 你也可以一次嵌入一个发言人的多句话：
 
 ```python
 emb_tensor = dvector.embed_utterances([mel_tensor_1, mel_tensor_2])  # shape: (emb_dim)
 ```
+
+当然你也可以一次测试多个准确率,只需要在test.py中修改目标文件夹：
+```bash
+python3 test.py
+```
+我使用的测试数据包为Free ST Chinese Mandarin Corpus
+
+这个语料库是用手机在室内安静的环境中录制的。它有855个speakers。每个演讲者有120个话语。所有的话语都经过人仔细的转录和核对。保证转录精度
+
+语料库包含：
+1音频文件；
+2转录；
+3元数据；
+
+2）链接
+
+下载：（8.2G）
+
+http://www.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz
+
+国内镜像：
+
+http://cn-mirror.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz
 
 这个例子中有两个模块：
 
